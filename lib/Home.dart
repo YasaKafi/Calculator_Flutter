@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mycalculator/buttons.dart';
 import 'package:math_expressions/math_expressions.dart';
 
@@ -88,41 +89,113 @@ class _HomeState extends State<Home> {
                           buttonText: buttons[index],
                           color: Colors.green,
                           textColor: Colors.white,
+
                         );
-                      } else if (index == 1) {
+
+                      } else if (index == 1){
                         return Mybutton(
                           buttonTapped: () {
                             setState(() {
-                              userQuestion = userQuestion.substring(
-                                  0, userQuestion.length - 1, );
-                              if(userQuestion.isEmpty){
-                                userAnswer = '';
-                              }
+                              userQuestion = userQuestion.substring(0, userQuestion.length-1);
+
                             });
                           },
                           buttonText: buttons[index],
-                          color: Colors.red,
+                          color: Colors.redAccent,
                           textColor: Colors.white,
                         );
-                      } else if (index == buttons.length - 1) {
+                      }else if (index == 2){
                         return Mybutton(
                           buttonTapped: () {
                             setState(() {
-                              equalPressed();
+                              userQuestion = userQuestion + buttons[index];
+
                             });
                           },
                           buttonText: buttons[index],
-                          color: Color.fromRGBO(30, 177, 200, 1),
+                          color: Color.fromRGBO(30, 177, 200, 1.0),
                           textColor: Colors.white,
                         );
-                      }else if (index == buttons.length - 2){
+                      }else if (index == 3){
                         return Mybutton(
+                          buttonTapped: () {
+                            setState(() {
+                              userQuestion = userQuestion + buttons[index];
+
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Color.fromRGBO(30, 177, 200, 1.0),
+                          textColor: Colors.white,
+                        );
+                      }else if (index == 7){
+                        return Mybutton(
+                          buttonTapped: () {
+                            setState(() {
+                              userQuestion = userQuestion + buttons[index];
+
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Color.fromRGBO(30, 177, 200, 1.0),
+                          textColor: Colors.white,
+                        );
+                      }else if (index == 11){
+                        return Mybutton(
+                          buttonTapped: () {
+                            setState(() {
+                              userQuestion = userQuestion + buttons[index];
+
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Color.fromRGBO(30, 177, 200, 1.0),
+                          textColor: Colors.white,
+                        );
+                      }else if (index == buttons.length-5){
+                        return Mybutton(
+                          buttonTapped: () {
+                            setState(() {
+                              userQuestion = userQuestion + buttons[index];
+
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Color.fromRGBO(30, 177, 200, 1.0),
+                          textColor: Colors.white,
+                        );
+                      }else if (index == buttons.length-2){
+
+                        return Mybutton(
+                          buttonTapped: (){
+                            Fluttertoast.showToast(
+                                msg: "Toast message",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0
+                            );
+
+                          },
 
                           buttonText: buttons[index],
-                          color: Colors.white,
-                          textColor: Color.fromRGBO(30, 177, 200, 1),
+                          color: Color.fromRGBO(30, 177, 200, 1.0),
+                          textColor:Color.fromRGBO(255, 255, 255, 1.0),
                         );
-                      } else {
+                      } else if (index == buttons.length-1){
+                        return Mybutton(
+                          buttonTapped: () {
+                            setState(() {
+                             equalPressed();
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Color.fromRGBO(30, 177, 200, 1.0),
+                          textColor:Color.fromRGBO(255, 255, 255, 1.0),
+                        );
+                      }else {
                         return Mybutton(
                           buttonTapped: () {
                             setState(() {
@@ -130,22 +203,22 @@ class _HomeState extends State<Home> {
                             });
                           },
                           buttonText: buttons[index],
-                          color: isOperator(buttons[index])
-                              ? Color.fromRGBO(30, 177, 200, 1)
-                              : Color.fromRGBO(232, 249, 252, 1),
-                          textColor: isOperator(buttons[index])
-                              ? Colors.white
-                              : Color.fromRGBO(30, 177, 200, 1),
+
+
+                          color: Colors.white,
+                          textColor: Color.fromRGBO(0, 0, 0, 1.0),
                         );
                       }
                     },
                   ),
-                )),
+                ),
+                  ),
           ],
         ),
       ),
     );
   }
+
 
   bool isOperator(String x) {
     if (x == ' % ' || x == ' / ' || x == ' x ' || x == ' - ' || x == ' + ' || x == ' = ') {
@@ -154,7 +227,7 @@ class _HomeState extends State<Home> {
     return false;
   }
 
-  void equalPressed() {
+   equalPressed() {
     String finalQuestion = userQuestion;
     finalQuestion = finalQuestion.replaceAll('x', '*');
 
@@ -173,3 +246,29 @@ class _HomeState extends State<Home> {
 // color: isOperator(buttons[index]) ? Color.fromRGBO(30, 177, 200, 1) : Color.fromRGBO(30, 177, 200, 0.50),
 // textColor: isOperator(buttons[index]) ? Colors.white: Color.fromRGBO(30, 177, 200, 1),
 // );
+// else if (index == 3) {
+// userQuestion =
+// userQuestion.replaceAll("x", "/");
+// userQuestion =
+// userQuestion.replaceAll("-", "/");
+// userQuestion =
+// userQuestion.replaceAll("+", "/");
+// return null;
+// } else if (index == 11) {
+// userQuestion =
+// userQuestion.replaceAll("/", "-");
+// userQuestion =
+// userQuestion.replaceAll("x", "-");
+// userQuestion =
+// userQuestion.replaceAll("+", "-");
+// return null;
+// } else if (index == buttons.length - 5) {
+// userQuestion =
+// userQuestion.replaceAll("/", "+");
+// userQuestion =
+// userQuestion.replaceAll("x", "+");
+// userQuestion =
+// userQuestion.replaceAll("-", "+");
+//
+// return null;
+// }
