@@ -1,6 +1,6 @@
 # mycalculator
 
-First App
+First App Flutter project 
 
 ## Getting Started
 
